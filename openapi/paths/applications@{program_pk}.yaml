@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Applications
+  description: |-
+    API endpoint that allows list of application to be viewed for a specific
+    program
+  operationId: RetrieveApplication
+  parameters:
+  - name: program_pk
+    in: path
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_7.yaml'

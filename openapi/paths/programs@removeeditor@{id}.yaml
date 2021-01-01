@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Programs
+  operationId: RemoveProgramEditor
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this program.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_42.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_43.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_44.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_12.yaml'

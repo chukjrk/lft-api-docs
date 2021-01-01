@@ -1,0 +1,8 @@
+properties:
+  id:
+    type: integer
+    readOnly: true
+  file:
+    type: string
+    format: binary
+    nullable: true

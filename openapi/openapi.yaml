@@ -1,70 +1,120 @@
 openapi: 3.0.2
 info:
   version: 1.0.0
-  title: Example.com
-  termsOfService: 'https://example.com/terms/'
+  title: LFT API
   contact:
-    email: contact@example.com
-    url: 'http://example.com/contact'
+    email: cjkemdirim@theopportunityexchange.com
+    url: 'https://www.theopportunityexchange.com/'
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
+    url: 'https://toeconnect-production.s3.us-east-2.amazonaws.com/static/images/LOGO-Final2x-p-1080.png'
   description: >
-    This is an **example** API to demonstrate features of OpenAPI specification
 
     # Introduction
 
-    This API definition is intended to to be a good starting point for
-    describing your API in 
+    This is the the API definitiion for The Opportunity Exchange's Loan Fund tool.
+
+    This is the the API definitiion for The Opportunity Exchange's Loan Fund tool.
+    It is a RESTful Django API.
+
+    ## Documentation Tools
+
+    This documentation is made using the following tools.
 
     [OpenAPI/Swagger
     format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
 
     It also demonstrates features of
     [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
-    and 
+    and
 
     [Redoc](https://github.com/Redocly/Redoc) documentation engine. So beyond
-    the standard OpenAPI syntax we use a few 
+    the standard OpenAPI syntax we use a few
 
     [vendor
     extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).
 
+    Using the OpenAPI Specifications.
 
-    # OpenAPI Specification
 
-    The goal of The OpenAPI Specification is to define a standard,
-    language-agnostic interface to REST APIs which
-
-    allows both humans and computers to discover and understand the capabilities
-    of the service without access to source
-
-    code, documentation, or through network traffic inspection. When properly
-    defined via OpenAPI, a consumer can 
-
-    understand and interact with the remote service with a minimal amount of
-    implementation logic. Similar to what
-
-    interfaces have done for lower-level programming, OpenAPI removes the
-    guesswork in calling the service.
 externalDocs:
   description: Find out how to create a GitHub repo for your OpenAPI definition.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
-  - name: Echo
-    description: Example echo operations
   - name: User
     description: Operations about user
+  - name: PaidOrg
+    description: Operations directly about the paid org
+  - name: Applications
+    description: Operations regarding the applications
+  - name: Programs
+    description: Operations about the programs
+  - name: Questions
+    description: Operations related to questions
 servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
 paths:
-  '/users/{username}':
-    $ref: 'paths/users@{username}.yaml'
-  /echo:
-    $ref: paths/echo.yaml
+  '/users':
+    $ref: 'paths/users.yaml'
+  '/users/{id}':
+    $ref: 'paths/users@{id}.yaml'
+  '/applicationpermissions':
+    $ref: 'paths/applicationpermissions.yaml'
+  '/applicationpermissions/{id}':
+    $ref: 'paths/applicationpermissions@{id}.yaml'
+  '/organizations/{id}':
+    $ref: 'paths/organizations@{id}.yaml'
+  '/questions/{id}':
+    $ref: 'paths/questions@{id}.yaml'
+  '/questions/{id}/choices':
+    $ref: 'paths/questions@{id}@choices.yaml'
+  '/applications/user':
+    $ref: 'paths/applications@user.yaml'
+  '/applications/{program_pk}':
+    $ref: 'paths/applications@{program_pk}.yaml'
+  '/application/{id}':
+    $ref: 'paths/application@{id}.yaml'
+  '/applications/score/{id}':
+    $ref: 'paths/applications@score@{id}.yaml'
+  '/stages/{id}':
+    $ref: 'paths/stages@{id}.yaml'
+  '/programs/public':
+    $ref: 'paths/programs@public.yaml'
+  '/programs/slug/{url_slug}':
+    $ref: 'paths/programs@slug@{url_slug}.yaml'
+  '/programs/':
+    $ref: 'paths/programs.yaml'
+  '/programs/{id}':
+    $ref: 'paths/programs@{id}.yaml'
+  '/contacts/':
+    $ref: 'paths/contacts.yaml'
+  '/questions/duplicate/{id}':
+    $ref: 'paths/questions@duplicate@{id}.yaml'
+  '/application/new':
+    $ref: 'paths/application@new.yaml'
+  '/applicationfileattachment/':
+    $ref: 'paths/applicationfileattachment.yaml'
+  '/program/new':
+    $ref: 'paths/program@new.yaml'
+  '/programs/removeeditor/{id}':
+    $ref: 'paths/programs@removeeditor@{id}.yaml'
+  '/lft/password_reset/validate_token/':
+    $ref: 'paths/lft@password_reset@validate_token.yaml'
+  '/lft/password_reset/confirm/':
+    $ref: 'paths/lft@password_reset@confirm.yaml'
+  '/lft/password_reset/':
+    $ref: 'paths/lft@password_reset.yaml'
+  '/application/update/{id}':
+    $ref: 'paths/application@update@{id}.yaml'
+  '/application/stageupdate/{id}':
+    $ref: 'paths/application@stageupdate@{id}.yaml'
+  '/programupdate/{id}':
+    $ref: 'paths/programupdate@{id}.yaml'
+  '/bulk/applications/':
+    $ref: 'paths/bulk@applications.yaml'
 components:
   securitySchemes:
     main_auth:

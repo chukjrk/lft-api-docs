@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Questions
+  operationId: CreateDuplicateQuestion
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this question.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_30.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_31.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_32.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_4.yaml'

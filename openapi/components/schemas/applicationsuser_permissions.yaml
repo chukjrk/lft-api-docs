@@ -1,0 +1,15 @@
+properties:
+  id:
+    type: integer
+    readOnly: true
+  permissions:
+    type: string
+    enum:
+    - view_only
+    - view_edit
+  application:
+    type: integer
+  owner:
+    type: integer
+  collaborator:
+    type: integer

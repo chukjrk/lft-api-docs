@@ -1,0 +1,90 @@
+required:
+- program
+- submitted_by
+properties:
+  id:
+    type: integer
+    readOnly: true
+  comments:
+    type: array
+    readOnly: true
+    items:
+      required:
+      - application
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        commment:
+          type: string
+        time_submitted:
+          type: string
+          format: date-time
+          readOnly: true
+        application:
+          type: integer
+        commenter:
+          type: integer
+          nullable: true
+  stage:
+    type: string
+    readOnly: true
+  program_name:
+    type: string
+    readOnly: true
+  permissions:
+    type: array
+    readOnly: true
+    items:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permissions:
+          type: string
+          enum:
+          - view_only
+          - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+        collaborator:
+          type: integer
+  applicant_name:
+    maxLength: 500
+    type: string
+  applicant_project:
+    maxLength: 500
+    type: string
+  email:
+    maxLength: 254
+    type: string
+    format: email
+  time_submitted:
+    type: string
+    format: date-time
+    readOnly: true
+  status:
+    maxLength: 200
+    type: string
+  total_auto_score:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+    nullable: true
+  total_manual_score:
+    multipleOf: 0.01
+    maximum: 100000000
+    minimum: -100000000
+    type: number
+    nullable: true
+  responses:
+    type: object
+    nullable: true
+  is_applicant_editable:
+    type: boolean
+  program:
+    type: integer
+  submitted_by:
+    type: integer

@@ -1,0 +1,203 @@
+required:
+- program
+- score_types
+properties:
+  id:
+    type: integer
+    readOnly: true
+  questions:
+    type: array
+    readOnly: true
+    items:
+      required:
+      - program
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        choices:
+          type: array
+          readOnly: true
+          items:
+            required:
+            - question
+            - weight
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              choice_text:
+                type: string
+              choice_text_label:
+                maxLength: 1024
+                type: string
+              choice_helper_text:
+                maxLength: 1024
+                type: string
+              choice_helper_text_label:
+                maxLength: 1024
+                type: string
+              choice_index:
+                maximum: 2147483647
+                minimum: -2147483648
+                type: integer
+              isColumn:
+                type: boolean
+              isRow:
+                type: boolean
+              weight:
+                multipleOf: 0.1
+                maximum: 10000
+                minimum: -10000
+                type: number
+              auto_fail:
+                type: boolean
+              question:
+                type: integer
+  applications:
+    type: array
+    readOnly: true
+    items:
+      required:
+      - program
+      - submitted_by
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        comments:
+          type: array
+          readOnly: true
+          items:
+            required:
+            - application
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              commment:
+                type: string
+              time_submitted:
+                type: string
+                format: date-time
+                readOnly: true
+              application:
+                type: integer
+              commenter:
+                type: integer
+                nullable: true
+        stage:
+          type: string
+          readOnly: true
+        program_name:
+          type: string
+          readOnly: true
+        permissions:
+          type: array
+          readOnly: true
+          items:
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              permissions:
+                type: string
+                enum:
+                - view_only
+                - view_edit
+              application:
+                type: integer
+              owner:
+                type: integer
+              collaborator:
+                type: integer
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        time_submitted:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+  order:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+    nullable: true
+  question_order:
+    type: array
+    nullable: true
+    items:
+      type: integer
+  name:
+    maxLength: 300
+    type: string
+  status_options:
+    type: object
+  score_types:
+    type: string
+    enum:
+    - checklist
+    - boolean
+    - threshold
+  program:
+    type: integer

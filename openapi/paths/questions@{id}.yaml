@@ -1,0 +1,94 @@
+get:
+  tags:
+    - Questions
+  operationId: RetrieveQuestion
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this question.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_4.yaml'
+put:
+  tags:
+    - Questions
+  operationId: UpdateQuestion
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this question.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_18.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_19.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_20.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_4.yaml'
+delete:
+  tags:
+    - Questions
+  operationId: DestroyQuestion
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this question.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "204": {}
+patch:
+  tags:
+    - Questions
+  operationId: PartialUpdateQuestion
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this question.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_21.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_22.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_23.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_4.yaml'

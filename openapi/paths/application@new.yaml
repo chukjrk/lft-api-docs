@@ -1,0 +1,24 @@
+post:
+  tags:
+    - Applications
+  description: API endpoint that allows you to add Applications to be viewed or
+    edited
+  operationId: CreateApplication
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_33.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_34.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_35.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_7.yaml'

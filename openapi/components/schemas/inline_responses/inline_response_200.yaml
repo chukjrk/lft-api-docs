@@ -1,0 +1,22 @@
+required:
+- username
+properties:
+  id:
+    type: integer
+    readOnly: true
+  username:
+    maxLength: 150
+    pattern: ^[\w.@+-]+\Z
+    type: string
+    description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+      only.
+  first_name:
+    maxLength: 30
+    type: string
+  last_name:
+    maxLength: 150
+    type: string
+  email:
+    maxLength: 254
+    type: string
+    format: email

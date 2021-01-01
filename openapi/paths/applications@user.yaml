@@ -1,0 +1,16 @@
+get:
+  tags:
+    - Applications
+  description: |-
+    API endpoint that allows list of application to be viewed for a specific
+    user
+  operationId: listApplications
+  parameters: []
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/inline_responses/inline_response_200_6.yaml'

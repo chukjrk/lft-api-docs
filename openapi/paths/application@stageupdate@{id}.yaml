@@ -1,0 +1,62 @@
+put:
+  tags:
+    - Applications
+  description: API endpoint that allows users to edit a question.
+  operationId: UpdateApplicationStage
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_60.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_61.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_62.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/body/body_62.yaml'
+patch:
+  tags:
+    - Applications
+  description: API endpoint that allows users to edit a question.
+  operationId: PartialUpdateApplicationStage
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_63.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_64.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_65.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/body/body_65.yaml'

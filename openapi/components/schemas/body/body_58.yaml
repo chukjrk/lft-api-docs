@@ -1,0 +1,34 @@
+properties:
+  applicant_name:
+    maxLength: 500
+    type: string
+  applicant_project:
+    maxLength: 500
+    type: string
+  email:
+    maxLength: 254
+    type: string
+    format: email
+  status:
+    maxLength: 200
+    type: string
+  total_auto_score:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+    nullable: true
+  total_manual_score:
+    multipleOf: 0.01
+    maximum: 100000000
+    minimum: -100000000
+    type: number
+    nullable: true
+  responses:
+    type: object
+    nullable: true
+  is_applicant_editable:
+    type: boolean
+  program:
+    type: integer
+  submitted_by:
+    type: integer

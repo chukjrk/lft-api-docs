@@ -1,0 +1,65 @@
+required:
+- external_title
+- internal_title
+- open_date
+- url_slug
+properties:
+  id:
+    type: integer
+    readOnly: true
+  applications:
+    type: string
+    readOnly: true
+  editors:
+    type: array
+    readOnly: true
+    items:
+      $ref: '../programspublic_editors.yaml'
+  questions:
+    type: array
+    readOnly: true
+    items:
+      $ref: './inline_response_200_5.yaml'
+  stages:
+    type: array
+    readOnly: true
+    items:
+      $ref: '../programspublic_stages.yaml'
+  open_date:
+    type: string
+    format: date
+  close_date:
+    type: string
+    format: date
+    nullable: true
+  is_public:
+    type: boolean
+  internal_title:
+    maxLength: 200
+    type: string
+  external_title:
+    maxLength: 200
+    type: string
+  version_number:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+  url_slug:
+    maxLength: 100
+    type: string
+  description:
+    type: string
+  status:
+    maxLength: 100
+    type: string
+    nullable: true
+  edit_allowed:
+    type: boolean
+  login_required:
+    type: boolean
+  paid_org_affiliation:
+    type: string
+    readOnly: true
+  created_by:
+    type: string
+    readOnly: true

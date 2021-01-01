@@ -1,0 +1,4579 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: LFT API
+  contact:
+    email: cjkemdirim@theopportunityexchange.com
+    url: 'https://www.theopportunityexchange.com/'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: >-
+      https://toeconnect-production.s3.us-east-2.amazonaws.com/static/images/LOGO-Final2x-p-1080.png
+  description: >
+
+    # Introduction
+
+    This is the the API definitiion for The Opportunity Exchange's Loan Fund
+    tool.
+
+    This is the the API definitiion for The Opportunity Exchange's Loan Fund
+    tool. It is a RESTful Django API.
+
+    ## Documentation Tools
+
+    This documentation is made using the following tools.
+
+    [OpenAPI/Swagger
+    format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
+
+    It also demonstrates features of
+    [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
+    and
+
+    [Redoc](https://github.com/Redocly/Redoc) documentation engine. So beyond
+    the standard OpenAPI syntax we use a few
+
+    [vendor
+    extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).
+
+    Using the OpenAPI Specifications.
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: 'https://github.com/Rebilly/generator-openapi-repo'
+tags:
+  - name: User
+    description: Operations about user
+  - name: PaidOrg
+    description: Operations directly about the paid org
+  - name: Applications
+    description: Operations regarding the applications
+  - name: Programs
+    description: Operations about the programs
+  - name: Questions
+    description: Operations related to questions
+servers:
+  - url: 'http://example.com/api/v1'
+  - url: 'https://example.com/api/v1'
+paths:
+  /users:
+    parameters:
+      - name: pretty_print
+        in: query
+        description: Pretty print response
+        schema:
+          type: boolean
+    get:
+      tags:
+        - User
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: listUsers
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200'
+    post:
+      tags:
+        - User
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: createUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_1'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_2'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+  '/users/{id}':
+    get:
+      tags:
+        - User
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: retrieveUser
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this user.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+    put:
+      tags:
+        - User
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this user.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_3'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_4'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_5'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+    delete:
+      tags:
+        - User
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: destroyUser
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this user.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '204': {}
+    patch:
+      tags:
+        - User
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: partial_updateUser
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this user.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_6'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_7'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_8'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+  /applicationpermissions:
+    get:
+      tags:
+        - Application Permissions
+      description: >-
+        API endpoint that allows collaboration status of an application to be
+        created, deleted, or updated.
+      operationId: listApplicationPermissions
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_1'
+    post:
+      tags:
+        - Application Permissions
+      description: >-
+        API endpoint that allows collaboration status of an application to be
+        created, deleted, or updated.
+      operationId: createApplicationPermission
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_9'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_10'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_11'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+  '/applicationpermissions/{id}':
+    get:
+      tags:
+        - Application Permissions
+      description: >-
+        API endpoint that allows collaboration status of an application to be
+        created, deleted, or updated.
+      operationId: retrieveApplicationPermission
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application permission.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+    put:
+      tags:
+        - Application Permissions
+      description: >-
+        API endpoint that allows collaboration status of an application to be
+        created, deleted, or updated.
+      operationId: updateApplicationPermission
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application permission.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_12'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_13'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_14'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+    delete:
+      tags:
+        - Application Permissions
+      description: >-
+        API endpoint that allows collaboration status of an application to be
+        created, deleted, or updated.
+      operationId: destroyApplicationPermission
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application permission.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '204': {}
+    patch:
+      tags:
+        - Application Permissions
+      description: >-
+        API endpoint that allows collaboration status of an application to be
+        created, deleted, or updated.
+      operationId: partial_updateApplicationPermission
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application permission.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_15'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_16'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_17'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+  '/organizations/{id}':
+    get:
+      tags:
+        - PaidOrg
+      description: API endpoint that returns all public programs
+      operationId: RetrievePaidOrganization
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this paid organization.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+  '/questions/{id}':
+    get:
+      tags:
+        - Questions
+      operationId: RetrieveQuestion
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this question.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+    put:
+      tags:
+        - Questions
+      operationId: UpdateQuestion
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this question.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_18'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_19'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_20'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+    delete:
+      tags:
+        - Questions
+      operationId: DestroyQuestion
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this question.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '204': {}
+    patch:
+      tags:
+        - Questions
+      operationId: PartialUpdateQuestion
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this question.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_21'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_22'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_23'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+  '/questions/{id}/choices':
+    get:
+      tags:
+        - Questions
+      operationId: listQuestionChoices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/programidquestions_choices'
+  /applications/user:
+    get:
+      tags:
+        - Applications
+      description: |-
+        API endpoint that allows list of application to be viewed for a specific
+        user
+      operationId: listApplications
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_6'
+  '/applications/{program_pk}':
+    get:
+      tags:
+        - Applications
+      description: |-
+        API endpoint that allows list of application to be viewed for a specific
+        program
+      operationId: RetrieveApplication
+      parameters:
+        - name: program_pk
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+  '/application/{id}':
+    get:
+      tags:
+        - Applications
+      description: This API endpoint lists a specific program
+      operationId: RetrieveApplication
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+  '/applications/score/{id}':
+    get:
+      tags:
+        - Applications
+      operationId: RetrieveApplicationScore
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_8'
+  '/stages/{id}':
+    get:
+      tags:
+        - Stages
+      operationId: RetrieveStage
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this stage.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_9'
+    put:
+      tags:
+        - Stages
+      operationId: UpdateStage
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this stage.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_24'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_25'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_26'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_9'
+    delete:
+      tags:
+        - Stages
+      operationId: DestroyStage
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this stage.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '204': {}
+    patch:
+      tags:
+        - Stages
+      operationId: PartialUpdateStage
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this stage.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_27'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_28'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_29'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_9'
+  /programs/public:
+    get:
+      tags:
+        - Programs
+      description: API endpoint that returns all public programs
+      operationId: listPublicPrograms
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_10'
+  '/programs/slug/{url_slug}':
+    get:
+      tags:
+        - Programs
+      description: This API endpoint lists a specific program
+      operationId: RetrieveProgramBySlug
+      parameters:
+        - name: url_slug
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_11'
+  /programs/:
+    get:
+      tags:
+        - Programs
+      description: >-
+        API endpoint that allows list of Programs to be viewed, as determined by
+        a user's paid organization affiliation
+      operationId: listPrograms
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_10'
+  '/programs/{id}':
+    get:
+      tags:
+        - Programs
+      description: This API endpoint lists a specific program
+      operationId: RetrieveProgram
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this program.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_12'
+  /contacts/:
+    get:
+      tags:
+        - Contacts
+      description: API endpoint that allows list of applicationby user
+      operationId: listContacts
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_13'
+  '/questions/duplicate/{id}':
+    post:
+      tags:
+        - Questions
+      operationId: CreateDuplicateQuestion
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this question.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_30'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_31'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_32'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+  /application/new:
+    post:
+      tags:
+        - Applications
+      description: API endpoint that allows you to add Applications to be viewed or edited
+      operationId: CreateApplication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_33'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_34'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_35'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+  /applicationfileattachment/:
+    post:
+      tags:
+        - Applications
+      operationId: CreateApplicationResponseAttachment
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_36'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_37'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_38'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_14'
+  /program/new:
+    post:
+      tags:
+        - Programs
+      description: >-
+        an API for creating new questions named: ProgramCreate
+
+        assigns the created_by and paid organization fields implicitly from the
+        request
+      operationId: CreateProgram
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_39'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_40'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_41'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_12'
+  '/programs/removeeditor/{id}':
+    post:
+      tags:
+        - Programs
+      operationId: RemoveProgramEditor
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this program.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_42'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_43'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_44'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_12'
+  /lft/password_reset/validate_token/:
+    post:
+      tags:
+        - OAUTH
+      description: An Api View which provides a method to verify that a token is valid
+      operationId: ValidateToken
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_45'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_46'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_47'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_47'
+  /lft/password_reset/confirm/:
+    post:
+      tags:
+        - OAUTH
+      description: >-
+        An Api View which provides a method to reset a password based on a
+        unique token
+      operationId: CreatePasswordToken
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_48'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_49'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_50'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_50'
+  /lft/password_reset/:
+    post:
+      tags:
+        - OAUTH
+      description: >-
+        An Api View which provides a method to request a password reset token
+        based on an e-mail address
+
+
+        Sends a signal reset_password_token_created when a reset token was
+        created
+      operationId: ResetPassword
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_51'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_52'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_53'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_53'
+  '/application/update/{id}':
+    put:
+      tags:
+        - Applications
+      description: API endpoint that allows users to edit a question.
+      operationId: UpdateApplication
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_54'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_55'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_56'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+    patch:
+      tags:
+        - Applications
+      description: API endpoint that allows users to edit a question.
+      operationId: PartialUpdateApplication
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_57'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_58'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_59'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+  '/application/stageupdate/{id}':
+    put:
+      tags:
+        - Applications
+      description: API endpoint that allows users to edit a question.
+      operationId: UpdateApplicationStage
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_60'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_61'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_62'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_62'
+    patch:
+      tags:
+        - Applications
+      description: API endpoint that allows users to edit a question.
+      operationId: PartialUpdateApplicationStage
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this application.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_63'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_64'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_65'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/body_65'
+  '/programupdate/{id}':
+    put:
+      tags:
+        - Programs
+      description: |-
+        API endpoint that allows users to edit the program if they
+        are part of the paid_org
+      operationId: UpdateProgram
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this program.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_66'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_67'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_68'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_12'
+    patch:
+      tags:
+        - Programs
+      description: |-
+        API endpoint that allows users to edit the program if they
+        are part of the paid_org
+      operationId: PartialUpdateProgram
+      parameters:
+        - name: id
+          in: path
+          description: A unique integer value identifying this program.
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_69'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_70'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_71'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_12'
+  /bulk/applications/:
+    put:
+      tags:
+        - Applications
+      operationId: UpdateApplication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body_72'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/body_73'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/body_74'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_7'
+components:
+  securitySchemes:
+    main_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'http://example.com/api/oauth/dialog'
+          scopes:
+            'read:users': read users info
+            'write:users': modify or remove users
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic
+  schemas:
+    inline_response_200:
+      required:
+        - username
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+    body:
+      required:
+        - password
+        - username
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_1:
+      required:
+        - password
+        - username
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_2:
+      required:
+        - password
+        - username
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_3:
+      required:
+        - password
+        - username
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_4:
+      required:
+        - password
+        - username
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_5:
+      required:
+        - password
+        - username
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_6:
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_7:
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    body_8:
+      properties:
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    applicationpermissions_collaborator:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    inline_response_200_1:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        collaborator:
+          $ref: '#/components/schemas/applicationpermissions_collaborator'
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_9:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_10:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_11:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    inline_response_200_2:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        collaborator:
+          required:
+            - password
+            - username
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            username:
+              maxLength: 150
+              pattern: '^[\w.@+-]+\Z'
+              type: string
+              description: >-
+                Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+                only.
+            first_name:
+              maxLength: 30
+              type: string
+            last_name:
+              maxLength: 150
+              type: string
+            email:
+              maxLength: 254
+              type: string
+              format: email
+            password:
+              maxLength: 128
+              type: string
+              writeOnly: true
+          readOnly: true
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_12:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_13:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_14:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_15:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_16:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    body_17:
+      properties:
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+    inline_response_200_3:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        organization_name:
+          maxLength: 200
+          type: string
+        organization_thumbnail:
+          type: string
+          format: binary
+        organization_description:
+          maxLength: 1500
+          type: string
+        organization_website:
+          maxLength: 1500
+          type: string
+        organization_email:
+          maxLength: 254
+          type: string
+          format: email
+    inline_response_200_4:
+      required:
+        - program
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        choices:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - question
+              - weight
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              choice_text:
+                type: string
+              choice_text_label:
+                maxLength: 1024
+                type: string
+              choice_helper_text:
+                maxLength: 1024
+                type: string
+              choice_helper_text_label:
+                maxLength: 1024
+                type: string
+              choice_index:
+                maximum: 2147483647
+                minimum: -2147483648
+                type: integer
+              isColumn:
+                type: boolean
+              isRow:
+                type: boolean
+              weight:
+                multipleOf: 0.1
+                maximum: 10000
+                minimum: -10000
+                type: number
+              auto_fail:
+                type: boolean
+              question:
+                type: integer
+    body_18:
+      required:
+        - program
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_19:
+      required:
+        - program
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_20:
+      required:
+        - program
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_21:
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_22:
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_23:
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    programidquestions_choices:
+      required:
+        - question
+        - weight
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        choice_text:
+          type: string
+        choice_text_label:
+          maxLength: 1024
+          type: string
+        choice_helper_text:
+          maxLength: 1024
+          type: string
+        choice_helper_text_label:
+          maxLength: 1024
+          type: string
+        choice_index:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        isColumn:
+          type: boolean
+        isRow:
+          type: boolean
+        weight:
+          multipleOf: 0.1
+          maximum: 10000
+          minimum: -10000
+          type: number
+        auto_fail:
+          type: boolean
+        question:
+          type: integer
+    applicationsuser_comments:
+      required:
+        - application
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        commment:
+          type: string
+        time_submitted:
+          type: string
+          format: date-time
+          readOnly: true
+        application:
+          type: integer
+        commenter:
+          type: integer
+          nullable: true
+    applicationsuser_permissions:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permissions:
+          type: string
+          enum:
+            - view_only
+            - view_edit
+        application:
+          type: integer
+        owner:
+          type: integer
+        collaborator:
+          type: integer
+    inline_response_200_6:
+      required:
+        - program
+        - submitted_by
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        comments:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/applicationsuser_comments'
+        stage:
+          type: string
+          readOnly: true
+        program_name:
+          type: string
+          readOnly: true
+        permissions:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/applicationsuser_permissions'
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        time_submitted:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    inline_response_200_7:
+      required:
+        - program
+        - submitted_by
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        comments:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - application
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              commment:
+                type: string
+              time_submitted:
+                type: string
+                format: date-time
+                readOnly: true
+              application:
+                type: integer
+              commenter:
+                type: integer
+                nullable: true
+        stage:
+          type: string
+          readOnly: true
+        program_name:
+          type: string
+          readOnly: true
+        permissions:
+          type: array
+          readOnly: true
+          items:
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              permissions:
+                type: string
+                enum:
+                  - view_only
+                  - view_edit
+              application:
+                type: integer
+              owner:
+                type: integer
+              collaborator:
+                type: integer
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        time_submitted:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    inline_response_200_8:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+    inline_response_200_9:
+      required:
+        - program
+        - score_types
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        questions:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - program
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              created_by:
+                type: string
+                readOnly: true
+              question_text:
+                type: string
+              question_text_label:
+                maxLength: 100
+                type: string
+              helper_text:
+                type: string
+              helper_text_label:
+                maxLength: 100
+                type: string
+              question_type:
+                maxLength: 100
+                type: string
+              is_required:
+                type: boolean
+              allow_select_multiple:
+                type: boolean
+              program:
+                type: integer
+              stage:
+                type: integer
+                nullable: true
+              choice_order:
+                type: array
+                nullable: true
+                items:
+                  type: integer
+              choices:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - question
+                    - weight
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    choice_text:
+                      type: string
+                    choice_text_label:
+                      maxLength: 1024
+                      type: string
+                    choice_helper_text:
+                      maxLength: 1024
+                      type: string
+                    choice_helper_text_label:
+                      maxLength: 1024
+                      type: string
+                    choice_index:
+                      maximum: 2147483647
+                      minimum: -2147483648
+                      type: integer
+                    isColumn:
+                      type: boolean
+                    isRow:
+                      type: boolean
+                    weight:
+                      multipleOf: 0.1
+                      maximum: 10000
+                      minimum: -10000
+                      type: number
+                    auto_fail:
+                      type: boolean
+                    question:
+                      type: integer
+        applications:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - program
+              - submitted_by
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              comments:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - application
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    commment:
+                      type: string
+                    time_submitted:
+                      type: string
+                      format: date-time
+                      readOnly: true
+                    application:
+                      type: integer
+                    commenter:
+                      type: integer
+                      nullable: true
+              stage:
+                type: string
+                readOnly: true
+              program_name:
+                type: string
+                readOnly: true
+              permissions:
+                type: array
+                readOnly: true
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    permissions:
+                      type: string
+                      enum:
+                        - view_only
+                        - view_edit
+                    application:
+                      type: integer
+                    owner:
+                      type: integer
+                    collaborator:
+                      type: integer
+              applicant_name:
+                maxLength: 500
+                type: string
+              applicant_project:
+                maxLength: 500
+                type: string
+              email:
+                maxLength: 254
+                type: string
+                format: email
+              time_submitted:
+                type: string
+                format: date-time
+                readOnly: true
+              status:
+                maxLength: 200
+                type: string
+              total_auto_score:
+                maximum: 2147483647
+                minimum: -2147483648
+                type: integer
+                nullable: true
+              total_manual_score:
+                multipleOf: 0.01
+                maximum: 100000000
+                minimum: -100000000
+                type: number
+                nullable: true
+              responses:
+                type: object
+                nullable: true
+              is_applicant_editable:
+                type: boolean
+              program:
+                type: integer
+              submitted_by:
+                type: integer
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    body_24:
+      required:
+        - program
+        - score_types
+      properties:
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    body_25:
+      required:
+        - program
+        - score_types
+      properties:
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    body_26:
+      required:
+        - program
+        - score_types
+      properties:
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    body_27:
+      properties:
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    body_28:
+      properties:
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    body_29:
+      properties:
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    programspublic_editors:
+      required:
+        - password
+        - username
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+    inline_response_200_5:
+      required:
+        - program
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        choices:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/programidquestions_choices'
+    programspublic_stages:
+      required:
+        - program
+        - score_types
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        questions:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/inline_response_200_5'
+        applications:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/inline_response_200_6'
+        order:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        question_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+        name:
+          maxLength: 300
+          type: string
+        status_options:
+          type: object
+        score_types:
+          type: string
+          enum:
+            - checklist
+            - boolean
+            - threshold
+        program:
+          type: integer
+    inline_response_200_10:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        applications:
+          type: string
+          readOnly: true
+        editors:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/programspublic_editors'
+        questions:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/inline_response_200_5'
+        stages:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/programspublic_stages'
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+        paid_org_affiliation:
+          type: string
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+    inline_response_200_11:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        questions:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - program
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              created_by:
+                type: string
+                readOnly: true
+              question_text:
+                type: string
+              question_text_label:
+                maxLength: 100
+                type: string
+              helper_text:
+                type: string
+              helper_text_label:
+                maxLength: 100
+                type: string
+              question_type:
+                maxLength: 100
+                type: string
+              is_required:
+                type: boolean
+              allow_select_multiple:
+                type: boolean
+              program:
+                type: integer
+              stage:
+                type: integer
+                nullable: true
+              choice_order:
+                type: array
+                nullable: true
+                items:
+                  type: integer
+              choices:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - question
+                    - weight
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    choice_text:
+                      type: string
+                    choice_text_label:
+                      maxLength: 1024
+                      type: string
+                    choice_helper_text:
+                      maxLength: 1024
+                      type: string
+                    choice_helper_text_label:
+                      maxLength: 1024
+                      type: string
+                    choice_index:
+                      maximum: 2147483647
+                      minimum: -2147483648
+                      type: integer
+                    isColumn:
+                      type: boolean
+                    isRow:
+                      type: boolean
+                    weight:
+                      multipleOf: 0.1
+                      maximum: 10000
+                      minimum: -10000
+                      type: number
+                    auto_fail:
+                      type: boolean
+                    question:
+                      type: integer
+        stages:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - program
+              - score_types
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              questions:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - program
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    created_by:
+                      type: string
+                      readOnly: true
+                    question_text:
+                      type: string
+                    question_text_label:
+                      maxLength: 100
+                      type: string
+                    helper_text:
+                      type: string
+                    helper_text_label:
+                      maxLength: 100
+                      type: string
+                    question_type:
+                      maxLength: 100
+                      type: string
+                    is_required:
+                      type: boolean
+                    allow_select_multiple:
+                      type: boolean
+                    program:
+                      type: integer
+                    stage:
+                      type: integer
+                      nullable: true
+                    choice_order:
+                      type: array
+                      nullable: true
+                      items:
+                        type: integer
+                    choices:
+                      type: array
+                      readOnly: true
+                      items:
+                        required:
+                          - question
+                          - weight
+                        properties:
+                          id:
+                            type: integer
+                            readOnly: true
+                          choice_text:
+                            type: string
+                          choice_text_label:
+                            maxLength: 1024
+                            type: string
+                          choice_helper_text:
+                            maxLength: 1024
+                            type: string
+                          choice_helper_text_label:
+                            maxLength: 1024
+                            type: string
+                          choice_index:
+                            maximum: 2147483647
+                            minimum: -2147483648
+                            type: integer
+                          isColumn:
+                            type: boolean
+                          isRow:
+                            type: boolean
+                          weight:
+                            multipleOf: 0.1
+                            maximum: 10000
+                            minimum: -10000
+                            type: number
+                          auto_fail:
+                            type: boolean
+                          question:
+                            type: integer
+              applications:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - program
+                    - submitted_by
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    comments:
+                      type: array
+                      readOnly: true
+                      items:
+                        required:
+                          - application
+                        properties:
+                          id:
+                            type: integer
+                            readOnly: true
+                          commment:
+                            type: string
+                          time_submitted:
+                            type: string
+                            format: date-time
+                            readOnly: true
+                          application:
+                            type: integer
+                          commenter:
+                            type: integer
+                            nullable: true
+                    stage:
+                      type: string
+                      readOnly: true
+                    program_name:
+                      type: string
+                      readOnly: true
+                    permissions:
+                      type: array
+                      readOnly: true
+                      items:
+                        properties:
+                          id:
+                            type: integer
+                            readOnly: true
+                          permissions:
+                            type: string
+                            enum:
+                              - view_only
+                              - view_edit
+                          application:
+                            type: integer
+                          owner:
+                            type: integer
+                          collaborator:
+                            type: integer
+                    applicant_name:
+                      maxLength: 500
+                      type: string
+                    applicant_project:
+                      maxLength: 500
+                      type: string
+                    email:
+                      maxLength: 254
+                      type: string
+                      format: email
+                    time_submitted:
+                      type: string
+                      format: date-time
+                      readOnly: true
+                    status:
+                      maxLength: 200
+                      type: string
+                    total_auto_score:
+                      maximum: 2147483647
+                      minimum: -2147483648
+                      type: integer
+                      nullable: true
+                    total_manual_score:
+                      multipleOf: 0.01
+                      maximum: 100000000
+                      minimum: -100000000
+                      type: number
+                      nullable: true
+                    responses:
+                      type: object
+                      nullable: true
+                    is_applicant_editable:
+                      type: boolean
+                    program:
+                      type: integer
+                    submitted_by:
+                      type: integer
+              order:
+                maximum: 2147483647
+                minimum: -2147483648
+                type: integer
+                nullable: true
+              question_order:
+                type: array
+                nullable: true
+                items:
+                  type: integer
+              name:
+                maxLength: 300
+                type: string
+              status_options:
+                type: object
+              score_types:
+                type: string
+                enum:
+                  - checklist
+                  - boolean
+                  - threshold
+              program:
+                type: integer
+        paid_organization_name:
+          type: string
+          readOnly: true
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+        paid_org_affiliation:
+          type: string
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+    inline_response_200_12:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        applications:
+          type: string
+          readOnly: true
+        editors:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - password
+              - username
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              username:
+                maxLength: 150
+                pattern: '^[\w.@+-]+\Z'
+                type: string
+                description: >-
+                  Required. 150 characters or fewer. Letters, digits and
+                  @/./+/-/_ only.
+              first_name:
+                maxLength: 30
+                type: string
+              last_name:
+                maxLength: 150
+                type: string
+              email:
+                maxLength: 254
+                type: string
+                format: email
+              password:
+                maxLength: 128
+                type: string
+                writeOnly: true
+        questions:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - program
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              created_by:
+                type: string
+                readOnly: true
+              question_text:
+                type: string
+              question_text_label:
+                maxLength: 100
+                type: string
+              helper_text:
+                type: string
+              helper_text_label:
+                maxLength: 100
+                type: string
+              question_type:
+                maxLength: 100
+                type: string
+              is_required:
+                type: boolean
+              allow_select_multiple:
+                type: boolean
+              program:
+                type: integer
+              stage:
+                type: integer
+                nullable: true
+              choice_order:
+                type: array
+                nullable: true
+                items:
+                  type: integer
+              choices:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - question
+                    - weight
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    choice_text:
+                      type: string
+                    choice_text_label:
+                      maxLength: 1024
+                      type: string
+                    choice_helper_text:
+                      maxLength: 1024
+                      type: string
+                    choice_helper_text_label:
+                      maxLength: 1024
+                      type: string
+                    choice_index:
+                      maximum: 2147483647
+                      minimum: -2147483648
+                      type: integer
+                    isColumn:
+                      type: boolean
+                    isRow:
+                      type: boolean
+                    weight:
+                      multipleOf: 0.1
+                      maximum: 10000
+                      minimum: -10000
+                      type: number
+                    auto_fail:
+                      type: boolean
+                    question:
+                      type: integer
+        stages:
+          type: array
+          readOnly: true
+          items:
+            required:
+              - program
+              - score_types
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              questions:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - program
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    created_by:
+                      type: string
+                      readOnly: true
+                    question_text:
+                      type: string
+                    question_text_label:
+                      maxLength: 100
+                      type: string
+                    helper_text:
+                      type: string
+                    helper_text_label:
+                      maxLength: 100
+                      type: string
+                    question_type:
+                      maxLength: 100
+                      type: string
+                    is_required:
+                      type: boolean
+                    allow_select_multiple:
+                      type: boolean
+                    program:
+                      type: integer
+                    stage:
+                      type: integer
+                      nullable: true
+                    choice_order:
+                      type: array
+                      nullable: true
+                      items:
+                        type: integer
+                    choices:
+                      type: array
+                      readOnly: true
+                      items:
+                        required:
+                          - question
+                          - weight
+                        properties:
+                          id:
+                            type: integer
+                            readOnly: true
+                          choice_text:
+                            type: string
+                          choice_text_label:
+                            maxLength: 1024
+                            type: string
+                          choice_helper_text:
+                            maxLength: 1024
+                            type: string
+                          choice_helper_text_label:
+                            maxLength: 1024
+                            type: string
+                          choice_index:
+                            maximum: 2147483647
+                            minimum: -2147483648
+                            type: integer
+                          isColumn:
+                            type: boolean
+                          isRow:
+                            type: boolean
+                          weight:
+                            multipleOf: 0.1
+                            maximum: 10000
+                            minimum: -10000
+                            type: number
+                          auto_fail:
+                            type: boolean
+                          question:
+                            type: integer
+              applications:
+                type: array
+                readOnly: true
+                items:
+                  required:
+                    - program
+                    - submitted_by
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    comments:
+                      type: array
+                      readOnly: true
+                      items:
+                        required:
+                          - application
+                        properties:
+                          id:
+                            type: integer
+                            readOnly: true
+                          commment:
+                            type: string
+                          time_submitted:
+                            type: string
+                            format: date-time
+                            readOnly: true
+                          application:
+                            type: integer
+                          commenter:
+                            type: integer
+                            nullable: true
+                    stage:
+                      type: string
+                      readOnly: true
+                    program_name:
+                      type: string
+                      readOnly: true
+                    permissions:
+                      type: array
+                      readOnly: true
+                      items:
+                        properties:
+                          id:
+                            type: integer
+                            readOnly: true
+                          permissions:
+                            type: string
+                            enum:
+                              - view_only
+                              - view_edit
+                          application:
+                            type: integer
+                          owner:
+                            type: integer
+                          collaborator:
+                            type: integer
+                    applicant_name:
+                      maxLength: 500
+                      type: string
+                    applicant_project:
+                      maxLength: 500
+                      type: string
+                    email:
+                      maxLength: 254
+                      type: string
+                      format: email
+                    time_submitted:
+                      type: string
+                      format: date-time
+                      readOnly: true
+                    status:
+                      maxLength: 200
+                      type: string
+                    total_auto_score:
+                      maximum: 2147483647
+                      minimum: -2147483648
+                      type: integer
+                      nullable: true
+                    total_manual_score:
+                      multipleOf: 0.01
+                      maximum: 100000000
+                      minimum: -100000000
+                      type: number
+                      nullable: true
+                    responses:
+                      type: object
+                      nullable: true
+                    is_applicant_editable:
+                      type: boolean
+                    program:
+                      type: integer
+                    submitted_by:
+                      type: integer
+              order:
+                maximum: 2147483647
+                minimum: -2147483648
+                type: integer
+                nullable: true
+              question_order:
+                type: array
+                nullable: true
+                items:
+                  type: integer
+              name:
+                maxLength: 300
+                type: string
+              status_options:
+                type: object
+              score_types:
+                type: string
+                enum:
+                  - checklist
+                  - boolean
+                  - threshold
+              program:
+                type: integer
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+        paid_org_affiliation:
+          type: string
+          readOnly: true
+        created_by:
+          type: string
+          readOnly: true
+    inline_response_200_13:
+      required:
+        - username
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          maxLength: 150
+          pattern: '^[\w.@+-]+\Z'
+          type: string
+          description: >-
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        first_name:
+          maxLength: 30
+          type: string
+        last_name:
+          maxLength: 150
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        eligible_applications:
+          type: string
+          readOnly: true
+        eligible_programs:
+          type: string
+          readOnly: true
+    body_30:
+      required:
+        - program
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_31:
+      required:
+        - program
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_32:
+      required:
+        - program
+      properties:
+        question_text:
+          type: string
+        question_text_label:
+          maxLength: 100
+          type: string
+        helper_text:
+          type: string
+        helper_text_label:
+          maxLength: 100
+          type: string
+        question_type:
+          maxLength: 100
+          type: string
+        is_required:
+          type: boolean
+        allow_select_multiple:
+          type: boolean
+        program:
+          type: integer
+        stage:
+          type: integer
+          nullable: true
+        choice_order:
+          type: array
+          nullable: true
+          items:
+            type: integer
+    body_33:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_34:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_35:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_36:
+      properties:
+        file:
+          type: string
+          format: binary
+          nullable: true
+    body_37:
+      properties:
+        file:
+          type: string
+          format: binary
+          nullable: true
+    body_38:
+      properties:
+        file:
+          type: string
+          format: binary
+          nullable: true
+    inline_response_200_14:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        file:
+          type: string
+          format: binary
+          nullable: true
+    body_39:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_40:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_41:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_42:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_43:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_44:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_45:
+      required:
+        - token
+      properties:
+        token:
+          type: string
+    body_46:
+      required:
+        - token
+      properties:
+        token:
+          type: string
+    body_47:
+      required:
+        - token
+      properties:
+        token:
+          type: string
+    body_48:
+      required:
+        - password
+        - token
+      properties:
+        password:
+          type: string
+        token:
+          type: string
+    body_49:
+      required:
+        - password
+        - token
+      properties:
+        password:
+          type: string
+        token:
+          type: string
+    body_50:
+      required:
+        - password
+        - token
+      properties:
+        password:
+          type: string
+        token:
+          type: string
+    body_51:
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+    body_52:
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+    body_53:
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+    body_54:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_55:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_56:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_57:
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_58:
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_59:
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_60:
+      properties:
+        stage:
+          type: integer
+          nullable: true
+        status:
+          maxLength: 200
+          type: string
+        is_applicant_editable:
+          type: boolean
+    body_61:
+      properties:
+        stage:
+          type: integer
+          nullable: true
+        status:
+          maxLength: 200
+          type: string
+        is_applicant_editable:
+          type: boolean
+    body_62:
+      properties:
+        stage:
+          type: integer
+          nullable: true
+        status:
+          maxLength: 200
+          type: string
+        is_applicant_editable:
+          type: boolean
+    body_63:
+      properties:
+        stage:
+          type: integer
+          nullable: true
+        status:
+          maxLength: 200
+          type: string
+        is_applicant_editable:
+          type: boolean
+    body_64:
+      properties:
+        stage:
+          type: integer
+          nullable: true
+        status:
+          maxLength: 200
+          type: string
+        is_applicant_editable:
+          type: boolean
+    body_65:
+      properties:
+        stage:
+          type: integer
+          nullable: true
+        status:
+          maxLength: 200
+          type: string
+        is_applicant_editable:
+          type: boolean
+    body_66:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_67:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_68:
+      required:
+        - external_title
+        - internal_title
+        - open_date
+        - url_slug
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_69:
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_70:
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_71:
+      properties:
+        open_date:
+          type: string
+          format: date
+        close_date:
+          type: string
+          format: date
+          nullable: true
+        is_public:
+          type: boolean
+        internal_title:
+          maxLength: 200
+          type: string
+        external_title:
+          maxLength: 200
+          type: string
+        version_number:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        url_slug:
+          maxLength: 100
+          type: string
+        description:
+          type: string
+        status:
+          maxLength: 100
+          type: string
+          nullable: true
+        edit_allowed:
+          type: boolean
+        login_required:
+          type: boolean
+    body_72:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_73:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer
+    body_74:
+      required:
+        - program
+        - submitted_by
+      properties:
+        applicant_name:
+          maxLength: 500
+          type: string
+        applicant_project:
+          maxLength: 500
+          type: string
+        email:
+          maxLength: 254
+          type: string
+          format: email
+        status:
+          maxLength: 200
+          type: string
+        total_auto_score:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          nullable: true
+        total_manual_score:
+          multipleOf: 0.01
+          maximum: 100000000
+          minimum: -100000000
+          type: number
+          nullable: true
+        responses:
+          type: object
+          nullable: true
+        is_applicant_editable:
+          type: boolean
+        program:
+          type: integer
+        submitted_by:
+          type: integer

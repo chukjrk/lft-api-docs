@@ -1,0 +1,43 @@
+parameters:
+  - name: pretty_print
+    in: query
+    description: Pretty print response
+    schema:
+      type: boolean
+get:
+  tags:
+    - User
+  description: API endpoint that allows users to be viewed or edited.
+  operationId: listUsers
+  parameters: []
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/inline_responses/inline_response_200.yaml'
+post:
+  tags:
+    - User
+  description: API endpoint that allows users to be viewed or edited.
+  operationId: createUser
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_1.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_2.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200.yaml'

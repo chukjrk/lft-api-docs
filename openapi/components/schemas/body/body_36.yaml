@@ -1,0 +1,5 @@
+properties:
+  file:
+    type: string
+    format: binary
+    nullable: true

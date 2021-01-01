@@ -1,0 +1,14 @@
+get:
+  tags:
+    - Contacts
+  description: API endpoint that allows list of applicationby user
+  operationId: listContacts
+  parameters: []
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/inline_responses/inline_response_200_13.yaml'

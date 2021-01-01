@@ -1,0 +1,35 @@
+required:
+- question
+- weight
+properties:
+  id:
+    type: integer
+    readOnly: true
+  choice_text:
+    type: string
+  choice_text_label:
+    maxLength: 1024
+    type: string
+  choice_helper_text:
+    maxLength: 1024
+    type: string
+  choice_helper_text_label:
+    maxLength: 1024
+    type: string
+  choice_index:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+  isColumn:
+    type: boolean
+  isRow:
+    type: boolean
+  weight:
+    multipleOf: 0.1
+    maximum: 10000
+    minimum: -10000
+    type: number
+  auto_fail:
+    type: boolean
+  question:
+    type: integer

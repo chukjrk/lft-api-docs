@@ -1,0 +1,14 @@
+get:
+  tags:
+    - Programs
+  description: API endpoint that returns all public programs
+  operationId: listPublicPrograms
+  parameters: []
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/inline_responses/inline_response_200_10.yaml'

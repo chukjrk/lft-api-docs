@@ -1,0 +1,94 @@
+get:
+  tags:
+    - Stages
+  operationId: RetrieveStage
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this stage.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_9.yaml'
+put:
+  tags:
+    - Stages
+  operationId: UpdateStage
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this stage.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_24.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_25.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_26.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_9.yaml'
+delete:
+  tags:
+    - Stages
+  operationId: DestroyStage
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this stage.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "204": {}
+patch:
+  tags:
+    - Stages
+  operationId: PartialUpdateStage
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this stage.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_27.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_28.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_29.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_9.yaml'

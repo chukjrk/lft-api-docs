@@ -1,0 +1,20 @@
+properties:
+  id:
+    type: integer
+    readOnly: true
+  organization_name:
+    maxLength: 200
+    type: string
+  organization_thumbnail:
+    type: string
+    format: binary
+  organization_description:
+    maxLength: 1500
+    type: string
+  organization_website:
+    maxLength: 1500
+    type: string
+  organization_email:
+    maxLength: 254
+    type: string
+    format: email

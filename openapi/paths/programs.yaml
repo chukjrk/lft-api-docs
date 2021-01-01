@@ -1,0 +1,15 @@
+get:
+  tags:
+    - Programs
+  description: API endpoint that allows list of Programs to be viewed, as determined
+    by a user's paid organization affiliation
+  operationId: listPrograms
+  parameters: []
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/inline_responses/inline_response_200_10.yaml'

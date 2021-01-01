@@ -1,0 +1,1042 @@
+openapi: 3.0.2
+info:
+  title: LFT API
+  description: API for LFT
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /users/:
+    get:
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: listUsers
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './inline_responses/inline_response_200.yaml'
+    post:
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: createUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_1'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_2'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: './inline_responses/inline_response_200'
+  /users/{id}/:
+    get:
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: retrieveUser
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this user.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: './inline_responses/inline_response_200'
+    put:
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: updateUser
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this user.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_3'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_4'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_5'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200'
+    delete:
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: destroyUser
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this user.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "204": {}
+    patch:
+      description: API endpoint that allows users to be viewed or edited.
+      operationId: partial_updateUser
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this user.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_6'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_7'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_8'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: './inline_responses/inline_response_200'
+  /applicationpermissions/:
+    get:
+      description: API endpoint that allows collaboration status of an application
+        to be created, deleted, or updated.
+      operationId: listApplicationPermissions
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/inline_responses/inline_response_200_1'
+    post:
+      description: API endpoint that allows collaboration status of an application
+        to be created, deleted, or updated.
+      operationId: createApplicationPermission
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_9'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_10'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_11'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_2'
+  /applicationpermissions/{id}/:
+    get:
+      description: API endpoint that allows collaboration status of an application
+        to be created, deleted, or updated.
+      operationId: retrieveApplicationPermission
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application permission.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: './inline_responses/inline_response_200_2'
+    put:
+      description: API endpoint that allows collaboration status of an application
+        to be created, deleted, or updated.
+      operationId: updateApplicationPermission
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application permission.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_12'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_13'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_14'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_2'
+    delete:
+      description: API endpoint that allows collaboration status of an application
+        to be created, deleted, or updated.
+      operationId: destroyApplicationPermission
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application permission.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "204": {}
+    patch:
+      description: API endpoint that allows collaboration status of an application
+        to be created, deleted, or updated.
+      operationId: partial_updateApplicationPermission
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application permission.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_15'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_16'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_17'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_2'
+  /organizations/{id}:
+    get:
+      description: API endpoint that returns all public programs
+      operationId: RetrievePaidOrganization
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this paid organization.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_3'
+  /questions/{id}:
+    get:
+      operationId: RetrieveQuestion
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this question.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_4'
+    put:
+      operationId: UpdateQuestion
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this question.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_18'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_19'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_20'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_4'
+    delete:
+      operationId: DestroyQuestion
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this question.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "204": {}
+    patch:
+      operationId: PartialUpdateQuestion
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this question.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_21'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_22'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_23'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_4'
+  /program/{id}/questions:
+    get:
+      operationId: listQuestions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/inline_responses/inline_response_200_5'
+  /questions/{id}/choices:
+    get:
+      operationId: listChoices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/programidquestions_choices'
+  /applications/user:
+    get:
+      description: |-
+        API endpoint that allows list of application to be viewed for a specific
+        user
+      operationId: listApplications
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/inline_responses/inline_response_200_6'
+  /applications/{program_pk}:
+    get:
+      description: |-
+        API endpoint that allows list of application to be viewed for a specific
+        program
+      operationId: RetrieveApplication
+      parameters:
+      - name: program_pk
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_7'
+  /application/{id}:
+    get:
+      description: This API endpoint lists a specific program
+      operationId: RetrieveApplication
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_7'
+  /applications/score/{id}:
+    get:
+      operationId: RetrieveApplication
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_8'
+  /stages/{id}:
+    get:
+      operationId: RetrieveStage
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this stage.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_9'
+    put:
+      operationId: UpdateStage
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this stage.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_24'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_25'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_26'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_9'
+    delete:
+      operationId: DestroyStage
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this stage.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "204": {}
+    patch:
+      operationId: PartialUpdateStage
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this stage.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_27'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_28'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_29'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_9'
+  /programs/public:
+    get:
+      description: API endpoint that returns all public programs
+      operationId: listPrograms
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/inline_responses/inline_response_200_10'
+  /programs/slug/{url_slug}:
+    get:
+      description: This API endpoint lists a specific program
+      operationId: RetrieveProgram
+      parameters:
+      - name: url_slug
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_11'
+  /programs/:
+    get:
+      description: API endpoint that allows list of Programs to be viewed, as determined
+        by a user's paid organization affiliation
+      operationId: listPrograms
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/inline_responses/inline_response_200_10'
+  /programs/{id}:
+    get:
+      description: This API endpoint lists a specific program
+      operationId: RetrieveProgram
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this program.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_12'
+  /contacts/:
+    get:
+      description: API endpoint that allows list of applicationby user
+      operationId: listContacts
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/inline_responses/inline_response_200_13'
+  /questions/duplicate/{id}:
+    post:
+      operationId: CreateQuestion
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this question.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_30'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_31'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_32'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_4'
+  /application/new:
+    post:
+      description: API endpoint that allows you to add Applications to be viewed or
+        edited
+      operationId: CreateApplication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_33'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_34'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_35'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_7'
+  /applicationfileattachment/:
+    post:
+      operationId: CreateApplicationResponseAttachment
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_36'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_37'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_38'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_14'
+  /program/new:
+    post:
+      description: |-
+        an API for creating new questions named: ProgramCreate
+        assigns the created_by and paid organization fields implicitly from the request
+      operationId: CreateProgram
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_39'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_40'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_41'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_12'
+  /programs/removeeditor/{id}:
+    post:
+      operationId: CreateProgram
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this program.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_42'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_43'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_44'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_12'
+  /lft/password_reset/validate_token/:
+    post:
+      description: An Api View which provides a method to verify that a token is valid
+      operationId: CreateToken
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_45'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_46'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_47'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/body/body_47'
+  /lft/password_reset/confirm/:
+    post:
+      description: An Api View which provides a method to reset a password based on
+        a unique token
+      operationId: CreatePasswordToken
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_48'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_49'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_50'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/body/body_50'
+  /lft/password_reset/:
+    post:
+      description: |-
+        An Api View which provides a method to request a password reset token based on an e-mail address
+
+        Sends a signal reset_password_token_created when a reset token was created
+      operationId: CreateEmail
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_51'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_52'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_53'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/body/body_53'
+  /application/update/{id}:
+    put:
+      description: API endpoint that allows users to edit a question.
+      operationId: UpdateApplication
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_54'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_55'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_56'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_7'
+    patch:
+      description: API endpoint that allows users to edit a question.
+      operationId: PartialUpdateApplication
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_57'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_58'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_59'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_7'
+  /application/stageupdate/{id}:
+    put:
+      description: API endpoint that allows users to edit a question.
+      operationId: UpdateApplication
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_60'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_61'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_62'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/body/body_62'
+    patch:
+      description: API endpoint that allows users to edit a question.
+      operationId: PartialUpdateApplication
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this application.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_63'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_64'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_65'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/body/body_65'
+  /programupdate/{id}:
+    put:
+      description: |-
+        API endpoint that allows users to edit the program if they
+        are part of the paid_org
+      operationId: UpdateProgram
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this program.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_66'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_67'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_68'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_12'
+    patch:
+      description: |-
+        API endpoint that allows users to edit the program if they
+        are part of the paid_org
+      operationId: PartialUpdateProgram
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this program.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_69'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_70'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_71'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_12'
+  /bulk/applications/:
+    put:
+      operationId: UpdateApplication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/body/body_72'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../components/schemas/body/body_73'
+          multipart/form-data:
+            schema:
+              $ref: '../components/schemas/body/body_74'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '../components/schemas/inline_responses/inline_response_200_7'

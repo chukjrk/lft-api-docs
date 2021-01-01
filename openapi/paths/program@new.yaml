@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Programs
+  description: |-
+    an API for creating new questions named: ProgramCreate
+    assigns the created_by and paid organization fields implicitly from the request
+  operationId: CreateProgram
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_39.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_40.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_41.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_12.yaml'

@@ -1,0 +1,102 @@
+get:
+  tags:
+    - Application Permissions
+  description: API endpoint that allows collaboration status of an application
+    to be created, deleted, or updated.
+  operationId: retrieveApplicationPermission
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application permission.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_2.yaml'
+put:
+  tags:
+    - Application Permissions
+  description: API endpoint that allows collaboration status of an application
+    to be created, deleted, or updated.
+  operationId: updateApplicationPermission
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application permission.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_12.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_13.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_14.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_2.yaml'
+delete:
+  tags:
+    - Application Permissions
+  description: API endpoint that allows collaboration status of an application
+    to be created, deleted, or updated.
+  operationId: destroyApplicationPermission
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application permission.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "204": {}
+patch:
+  tags:
+    - Application Permissions
+  description: API endpoint that allows collaboration status of an application
+    to be created, deleted, or updated.
+  operationId: partial_updateApplicationPermission
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application permission.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_15.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_16.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_17.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_2.yaml'

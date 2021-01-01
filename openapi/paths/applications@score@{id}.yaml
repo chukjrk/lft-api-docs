@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Applications
+  operationId: RetrieveApplicationScore
+  parameters:
+  - name: id
+    in: path
+    description: A unique integer value identifying this application.
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_8.yaml'

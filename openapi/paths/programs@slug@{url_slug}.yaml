@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Programs
+  description: This API endpoint lists a specific program
+  operationId: RetrieveProgramBySlug
+  parameters:
+  - name: url_slug
+    in: path
+    required: true
+    style: simple
+    explode: false
+    schema:
+      type: string
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_11.yaml'

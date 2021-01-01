@@ -1,0 +1,33 @@
+properties:
+  open_date:
+    type: string
+    format: date
+  close_date:
+    type: string
+    format: date
+    nullable: true
+  is_public:
+    type: boolean
+  internal_title:
+    maxLength: 200
+    type: string
+  external_title:
+    maxLength: 200
+    type: string
+  version_number:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+  url_slug:
+    maxLength: 100
+    type: string
+  description:
+    type: string
+  status:
+    maxLength: 100
+    type: string
+    nullable: true
+  edit_allowed:
+    type: boolean
+  login_required:
+    type: boolean

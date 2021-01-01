@@ -1,0 +1,15 @@
+properties:
+  id:
+    type: integer
+    readOnly: true
+  total_auto_score:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+    nullable: true
+  total_manual_score:
+    multipleOf: 0.01
+    maximum: 100000000
+    minimum: -100000000
+    type: number
+    nullable: true

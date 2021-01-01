@@ -1,0 +1,40 @@
+required:
+- program
+- score_types
+properties:
+  id:
+    type: integer
+    readOnly: true
+  questions:
+    type: array
+    readOnly: true
+    items:
+      $ref: './inline_responses/inline_response_200_5.yaml'
+  applications:
+    type: array
+    readOnly: true
+    items:
+      $ref: './inline_responses/inline_response_200_6.yaml'
+  order:
+    maximum: 2147483647
+    minimum: -2147483648
+    type: integer
+    nullable: true
+  question_order:
+    type: array
+    nullable: true
+    items:
+      type: integer
+  name:
+    maxLength: 300
+    type: string
+  status_options:
+    type: object
+  score_types:
+    type: string
+    enum:
+    - checklist
+    - boolean
+    - threshold
+  program:
+    type: integer

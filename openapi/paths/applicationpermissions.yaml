@@ -1,0 +1,39 @@
+get:
+  tags:
+    - Application Permissions
+  description: API endpoint that allows collaboration status of an application
+    to be created, deleted, or updated.
+  operationId: listApplicationPermissions
+  parameters: []
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/inline_responses/inline_response_200_1.yaml'
+post:
+  tags:
+    - Application Permissions
+  description: API endpoint that allows collaboration status of an application
+    to be created, deleted, or updated.
+  operationId: createApplicationPermission
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/body/body_9.yaml'
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: '../components/schemas/body/body_10.yaml'
+      multipart/form-data:
+        schema:
+          $ref: '../components/schemas/body/body_11.yaml'
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/inline_responses/inline_response_200_2.yaml'

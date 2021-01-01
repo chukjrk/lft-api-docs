@@ -1,0 +1,30 @@
+required:
+- program
+properties:
+  question_text:
+    type: string
+  question_text_label:
+    maxLength: 100
+    type: string
+  helper_text:
+    type: string
+  helper_text_label:
+    maxLength: 100
+    type: string
+  question_type:
+    maxLength: 100
+    type: string
+  is_required:
+    type: boolean
+  allow_select_multiple:
+    type: boolean
+  program:
+    type: integer
+  stage:
+    type: integer
+    nullable: true
+  choice_order:
+    type: array
+    nullable: true
+    items:
+      type: integer

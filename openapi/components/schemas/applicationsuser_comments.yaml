@@ -1,0 +1,17 @@
+required:
+- application
+properties:
+  id:
+    type: integer
+    readOnly: true
+  commment:
+    type: string
+  time_submitted:
+    type: string
+    format: date-time
+    readOnly: true
+  application:
+    type: integer
+  commenter:
+    type: integer
+    nullable: true

@@ -1,0 +1,9 @@
+properties:
+  stage:
+    type: integer
+    nullable: true
+  status:
+    maxLength: 200
+    type: string
+  is_applicant_editable:
+    type: boolean
