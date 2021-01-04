@@ -1,0 +1,2 @@
+/activity/
+Returns the paid orgs activity history
